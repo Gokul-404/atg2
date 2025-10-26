@@ -1,0 +1,30 @@
+service: email-service
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  environment:
+    BREVO_API_KEY: ${env:BREVO_API_KEY}
+    SENDER_EMAIL: ${env:SENDER_EMAIL}
+    SENDER_NAME: ${env:SENDER_NAME}
+
+functions:
+  sendEmail:
+    handler: handlers/sendEmail.handler
+    events:
+      - http:
+          path: send-email
+          method: post
+          cors: true
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    httpPort: 3000
+    host: 0.0.0.0

@@ -1,0 +1,27 @@
+{
+  "name": "email-service",
+  "version": "1.0.0",
+  "description": "Serverless email service using Brevo API",
+  "main": "handlers/sendEmail.js",
+  "scripts": {
+    "start": "serverless offline",
+    "deploy": "serverless deploy",
+    "remove": "serverless remove"
+  },
+  "keywords": [
+    "serverless",
+    "brevo",
+    "email",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@getbrevo/brevo": "^2.2.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "serverless": "^3.38.0",
+    "serverless-offline": "^13.3.3"
+  }
+}
